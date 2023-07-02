@@ -14,6 +14,17 @@ const findUserByEmail = expressAsyncHandler(async(email) => {
         });
 });
 
+const findByReferralKey = expressAsyncHandler(async (referralKey) => {
+  return await User.findOne({ referralKey: referralKey }, (error, result) => {
+    if (error) return null;
+    return result;
+  })
+    .clone()
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 //check if pswd is valid
 const isCorrectPassword = expressAsyncHandler(async(foundUser, userInfo) => {
     if (foundUser && (await bcrypt.compare(userInfo.password, foundUser.password))) {
@@ -36,4 +47,10 @@ const handleGetAllUsers = expressAsyncHandler(async(model, res) => {
 })
 
 
-export { findUserByEmail, handleGetAllUsers, isCorrectPassword, generateToken };
+export {
+  findUserByEmail,
+  handleGetAllUsers,
+  isCorrectPassword,
+  generateToken,
+  findByReferralKey,
+};

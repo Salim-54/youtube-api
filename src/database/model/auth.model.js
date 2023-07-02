@@ -1,58 +1,77 @@
 import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema(
+  {
     firstName: {
-        type: String,
-        min: 3,
-        required: true,
+      type: String,
+      min: 3,
+      required: true,
     },
     lastName: {
-        type: String,
-        min: 3,
-        required: true,
+      type: String,
+      min: 3,
+      required: true,
     },
     email: {
-        type: String,
-        unique: true,
-        min: 3,
-        max: 20,
-        required: true,
+      type: String,
+      unique: true,
+      min: 3,
+      max: 20,
+      required: true,
     },
     phone: {
-        type: String,
-        required: false,
+      type: String,
+      required: false,
+    },
+
+    gender: {
+      type: String,
+      required: false,
+    },
+    referralKey: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: false,
+    },
+    language: {
+      type: String,
+      required: false,
+    },
+    birthDay: {
+      type: String,
+      required: false,
     },
     password: {
-        type: String,
-        required: true,
-        min: 3,
-        max: 10,
+      type: String,
+      required: true,
+      min: 3,
+      max: 10,
     },
     verified: {
-        type: Boolean,
-        required: true,
-        default: false,
+      type: Boolean,
+      required: true,
+      default: false,
     },
     role: {
-        type: String,
-        required: true,
-        default: "normal",
+      type: String,
+      required: true,
+      default: "normal",
     },
 
-    applications: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Job",
-
-    }, ],
-
-    shortlists: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Job",
-
-    }, ],
-}, {
+    subscribers: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+  },
+  {
     timestamps: true,
-});
+  }
+);
 
 const User = mongoose.model("User", userSchema);
 

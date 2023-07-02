@@ -16,6 +16,6 @@ router.post("/login", httpLoginUser);
 router.get('/', httpGetAllUsers);
 router.get('/:id', httpGetUser);
 router.delete('/:id', httpDeleteUser);
-router.get("/verify/:id", httpVerify);
+
 
 export default router;
