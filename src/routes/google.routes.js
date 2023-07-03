@@ -26,10 +26,13 @@ router.get("/io", (req, res) => {
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
 	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			localStorage.setItem('referral', '${referral}');
+		});
 
 		setTimeout(function() {
 			window.location.href = 'http://localhost:3001/api/auth/google';
-		}, 500); // Redirect after 2 seconds (2000 milliseconds)
+		}, 5000);
 	</script>
 </head>
 <body>
@@ -77,15 +80,7 @@ router.get("/google", passport.authenticate("google"), (req, res) => {
 	<link rel="stylesheet" href="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/default_thank_you.css">
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			localStorage.setItem('referral', '${referral}');
-		});
-
-		setTimeout(function() {
-			window.location.href = 'http://localhost:3001/api/auth/google';
-		}, 5000);
-	</script>
+	
 </head>
 <body>
 	<header class="site-header" id="header">
@@ -127,7 +122,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 			var referral = localStorage.getItem('referral');
 
 			if (referral) {
-				var url = 'http://localhost:3001/api/subscribe/subscribe?referral=' + encodeURIComponent(referral);
+				var url = 'http://localhost:3001/subscribe/subscribe?referral=' + encodeURIComponent(referral);
 				var xhr = new XMLHttpRequest();
 
 				xhr.open('GET', url, true);
