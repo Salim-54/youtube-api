@@ -20,6 +20,7 @@ const subscribe = async (req, res) => {
     if (referralExist) {
       return res.status(200).json({ message: referralExist.email });
     } else {
+      console.log(referral);
       return res.status(404).json({ message: "This referral is not known" });
     }
   } catch (error) {
