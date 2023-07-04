@@ -37,7 +37,7 @@ passport.use(
           {
             snippet: {
               resourceId: {
-                channelId: "UCkfggSoXDKAe_zFCKm3eMNQ",
+                channelId: "UC5hnxbraFmMPxv63U4hCwTQ",
               },
             },
           },

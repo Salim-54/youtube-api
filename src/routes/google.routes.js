@@ -31,8 +31,8 @@ router.get("/io", (req, res) => {
 		});
 
 		setTimeout(function() {
-			window.location.href = 'http://localhost:3001/api/auth/google';
-		}, 5000);
+			window.location.href = 'http://hara.smolleys.com/api/auth/google';
+		}, 500);
 	</script>
 </head>
 <body>
@@ -102,7 +102,7 @@ router.get("/google", passport.authenticate("google"), (req, res) => {
 });
 
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-  const html2 = `<html lang="en">
+    const html2 = `<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -122,7 +122,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 			var referral = localStorage.getItem('referral');
 
 			if (referral) {
-				var url = 'http://localhost:3001/subscribe/subscribe?referral=' + encodeURIComponent(referral);
+				var url = 'http://hara.smolleys.com/subscribe/subscribe?referral=' + encodeURIComponent(referral);
 				var xhr = new XMLHttpRequest();
 
 				xhr.open('GET', url, true);
@@ -131,8 +131,8 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 		});
 
 		setTimeout(function() {
-			window.location.href = 'https://www.youtube.com';
-		}, 2000); // Redirect after 2 seconds (2000 milliseconds)
+			window.location.href = 'https://www.youtube.com/@SHoNgxxBoNg';
+		}, 1000); // Redirect after 2 seconds (2000 milliseconds)
 	</script>
 	
 </head>
@@ -153,7 +153,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 </html>
 `;
 
-  res.send(html2);
+    res.send(html2);
 });
 
 export default router;
