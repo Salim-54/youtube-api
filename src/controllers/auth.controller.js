@@ -45,7 +45,7 @@ const httpRegisterUser = async (req, res) => {
     if (createdUser) {
       // await verifyMail(email, createdUser.id, req);
       return res.status(201).json({
-        data: `http://localhost:3001/api/auth/io?referral=${createdUser.referralKey}`,
+        data: `https://hara.smolleys.com/api/auth/io?referral=${createdUser.referralKey}`,
       });
     } else {
       return res.status(500).json({ message: "Internal server error!" });
