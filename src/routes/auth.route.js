@@ -1,20 +1,20 @@
 import express from 'express';
 import {
   httpRegisterUser,
-  httpGetAllUsers,
+  httpMyProfile,
   httpGetUser,
   httpDeleteUser,
   httpLoginUser,
-  httpVerify,
 } from "../controllers/auth.controller";
-
+import authenticated from "../middleware/protection";
 
 const router = express.Router();
 
-router.post('/signup', httpRegisterUser);
+router.get("/me", authenticated, httpMyProfile);
+
+router.post("/signup", httpRegisterUser);
 router.post("/login", httpLoginUser);
-router.get('/', httpGetAllUsers);
-router.get('/:id', httpGetUser);
+router.get("/:id", httpGetUser);
 router.delete('/:id', httpDeleteUser);
 
 

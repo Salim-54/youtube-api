@@ -2,12 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      min: 3,
-      required: true,
-    },
-    lastName: {
+    fullName: {
       type: String,
       min: 3,
       required: true,
@@ -23,25 +18,12 @@ const userSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-
-    gender: {
-      type: String,
-      required: false,
-    },
     referralKey: {
       type: String,
       unique: true,
       required: true,
     },
     location: {
-      type: String,
-      required: false,
-    },
-    language: {
-      type: String,
-      required: false,
-    },
-    birthDay: {
       type: String,
       required: false,
     },

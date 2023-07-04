@@ -18,18 +18,7 @@ import { verifyMail } from "../utils/mailer";
 import { keyGenerator } from "../utils/keyGenerator";
 
 const httpRegisterUser = async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    phone,
-    password,
-    role,
-    location,
-    birthDay,
-    gender,
-    language,
-  } = req.body;
+  const { fullName, email, phone, password, role, location } = req.body;
   try {
     const userExist = await findUserByEmail(email);
     if (userExist) {
@@ -42,17 +31,13 @@ const httpRegisterUser = async (req, res) => {
     const referralKey = keyGenerator(10);
 
     const newUser = {
-      firstName,
-      lastName,
+      fullName,
       email,
       phone,
       password: hashedPassword,
       referralKey: referralKey,
       role,
       location,
-      birthDay,
-      gender,
-      language,
     };
 
     const createdUser = await handleCreateUser(User, newUser, res);
@@ -60,19 +45,7 @@ const httpRegisterUser = async (req, res) => {
     if (createdUser) {
       // await verifyMail(email, createdUser.id, req);
       return res.status(201).json({
-        _id: createdUser._id,
-        email: createdUser.email,
-        gender: createdUser.gender,
-        location: createdUser.location,
-        language: createdUser.language,
-        birthDay: createdUser.birthDay,
-        lastName: createdUser.lastName,
-        firstName: createdUser.firstName,
-        role: createdUser.role,
-        phone: createdUser.phone,
-        verified: createdUser.verified,
-        subscribers: createdUser.subscribers,
-        referralKey: createdUser.referralKey,
+        data: `http://localhost:3001/api/auth/io?referral=${createdUser.referralKey}`,
       });
     } else {
       return res.status(500).json({ message: "Internal server error!" });
@@ -91,8 +64,8 @@ const httpLoginUser = expressAsyncHandler(async (req, res) => {
       return res.status(200).json({
         _id: foundUser._id,
         email: foundUser.email,
-        lastName: foundUser.lastName,
-        firstName: foundUser.firstName,
+        fullName: foundUser.fullName,
+
         role: foundUser.role,
         verified: foundUser.verified,
         phone: foundUser.phone,
@@ -156,11 +129,28 @@ const httpDeleteUser = async(req, res) => {
         .json({ message: `User with ${user.email} removed successfully` });
 };
 
+const httpMyProfile = async (req, res) => {
+  const { _id } = req.user;
+  try {
+    const user = await handleGetSingle(User, _id);
+    if (!user) {
+      return res.status(400).json({ status: "Fail", message: "Invalid token" });
+    } else {
+      res.status(200).json({ data: user });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: `${error}` });
+  }
+};
+
+
+
 export {
   httpRegisterUser,
-  httpGetAllUsers,
   httpGetUser,
   httpUpdateUser,
   httpDeleteUser,
   httpLoginUser,
+  httpMyProfile,
 };
