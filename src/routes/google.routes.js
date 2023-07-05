@@ -97,7 +97,7 @@ router.get("/google", passport.authenticate("google"), (req, res) => {
 });
 
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-    const html2 = `<html lang="en">
+  const html2 = `<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -113,11 +113,23 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
 
     <script>
+
+	function removeQueryString(url) {
+  var index = url.indexOf('?');
+  if (index !== -1) {
+    return url.split('?')[0];
+  }
+  return url;
+}
 		document.addEventListener('DOMContentLoaded', function() {
 			var referral = localStorage.getItem('referral');
 
+
 			if (referral) {
-				var url = 'http://hara.smolleys.com/subscribe/subscribe?referral=' + encodeURIComponent(referral);
+
+				var result = removeQueryString(referral);
+
+				var url = 'http://hara.smolleys.com/subscribe/subscribe?referral=' + encodeURIComponent(result);
 				var xhr = new XMLHttpRequest();
 
 				xhr.open('GET', url, true);
@@ -148,7 +160,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 </html>
 `;
 
-    res.send(html2);
+  res.send(html2);
 });
 
 export default router;
