@@ -26,10 +26,7 @@ router.get("/io", (req, res) => {
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			localStorage.setItem('referral', '${referral}');
-		});
-
+		
 		setTimeout(function() {
 			window.location.href = 'http://hara.smolleys.com/api/auth/google';
 		}, 500);
