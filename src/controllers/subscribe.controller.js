@@ -18,8 +18,13 @@ const subscribe = async (req, res) => {
   const referral = queryString.substring(0, 10);
 
   try {
+    console.log("🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍");
     const referralExist = await findByReferralKey(referral);
     if (referralExist) {
+      console.log(
+        "🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍"
+      );
+
       const incremented = handleUpdate(
         User,
 
