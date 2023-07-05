@@ -6,7 +6,7 @@ const router = Router();
 let ref = "";
 
 router.get("/io", (req, res) => {
-  const referral = req.query.referral;
+  const { referral } = req.query;
   console.log("🔥🔥🔥🔥🔥🔥");
   //http://localhost:3001/api/auth/google?referral=salim
   console.log(referral);
@@ -26,7 +26,10 @@ router.get("/io", (req, res) => {
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
 	<script>
-		
+		document.addEventListener("DOMContentLoaded", function() {
+			localStorage.setItem('referral', '${referral}');
+		});
+
 		setTimeout(function() {
 			window.location.href = 'http://hara.smolleys.com/api/auth/google';
 		}, 500);
