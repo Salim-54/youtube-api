@@ -49,12 +49,7 @@ router.get("/io", (req, res) => {
 		<p class="site-footer__fineprint" id="fineprint">Copyright ©2014 | All Rights Reserved</p>
 	</footer>
 </body>
- <script>
- document.addEventListener("DOMContentLoaded", function() {
-    localStorage.setItem('referral', '${referral}');
-    });
-    
-  </script>
+ 
 </html>
 `;
 
