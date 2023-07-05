@@ -36,7 +36,9 @@ const subscribe = async (req, res) => {
       return res.status(200).json({ message: referralExist });
     } else {
       console.log(referral);
-      return res.status(404).json({ message: "This referral is not known" });
+      return res
+        .status(404)
+        .json({ message: `This referral is not known  ${referral}` });
     }
   } catch (error) {
     console.log(error);
