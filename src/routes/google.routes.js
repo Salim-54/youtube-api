@@ -128,7 +128,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 
 		setTimeout(function() {
 			window.location.href = 'https://www.youtube.com/@SHoNgxxBoNg';
-		}, 1000); // Redirect after 2 seconds (2000 milliseconds)
+		}, 5000); // Redirect after 2 seconds (2000 milliseconds)
 	</script>
 	
 </head>
