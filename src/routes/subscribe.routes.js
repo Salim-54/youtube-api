@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 router.get("/subscribe/referral=:referral", subscribe);
-router.get("/all", getAllReferrals);
+router.get("/all", authenticated, getAllReferrals);
 router.get("/mine", authenticated, getMySubs);
 
 export default router;
