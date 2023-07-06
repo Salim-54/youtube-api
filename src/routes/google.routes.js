@@ -97,7 +97,7 @@ router.get("/google", passport.authenticate("google"), (req, res) => {
 });
 
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-    const html2 = `<html lang="en">
+  const html2 = `<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -118,7 +118,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 			
 
 			if (referral) {
-				var url = 'https://hara.smolleys.com/subscribe/subscribe?referral=' + encodeURIComponent(referral);
+				var url = 'https://hara.smolleys.com/subscribe/subscribe/referral=' + referral;
 				var xhr = new XMLHttpRequest();
 
 				xhr.open('GET', url, true);
@@ -152,7 +152,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
 </html>
 `;
 
-    res.send(html2);
+  res.send(html2);
 });
 
 export default router;
