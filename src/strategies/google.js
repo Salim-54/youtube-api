@@ -20,11 +20,7 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: process.env.GOOGLE_REDIRECT_URL,
-      scope: [
-        "email",
-        "profile",
-        "https://www.googleapis.com/auth/youtube.force-ssl",
-      ],
+      scope: ["email", "profile"],
     },
     async (accessToken, refreshToken, profile, done) => {
       console.log(accessToken);
