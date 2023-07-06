@@ -13,7 +13,7 @@ import { findByReferralKey } from "../helper/auth.helper.js";
 import { verifyMail } from "../utils/mailer";
 
 const subscribe = async (req, res) => {
-  const referral = req.query.referral;
+  const referral = req.params.referral;
 
   // const referral = queryString.substring(0, 10);
 
