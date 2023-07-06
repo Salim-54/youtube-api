@@ -42,7 +42,7 @@ const httpRegisterUser = async (req, res) => {
     if (createdUser) {
       // await verifyMail(email, createdUser.id, req);
       return res.status(201).json({
-        data: `https://hara.smolleys.com/api/auth/io?referral=${createdUser.referralKey}`,
+        data: `https://hara.smolleys.com/api/auth/io/referral=${createdUser.referralKey}`,
         password: newPassword,
         phone: phone,
       });
