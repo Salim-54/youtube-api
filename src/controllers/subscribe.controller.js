@@ -13,9 +13,9 @@ import { findByReferralKey } from "../helper/auth.helper.js";
 import { verifyMail } from "../utils/mailer";
 
 const subscribe = async (req, res) => {
-  const queryString = req.query.referral;
+  const referral = req.query.referral;
 
-  const referral = queryString.substring(0, 10);
+  // const referral = queryString.substring(0, 10);
 
   try {
     console.log("🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍");
