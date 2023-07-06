@@ -5,8 +5,8 @@ const router = Router();
 
 let ref = "";
 
-router.get("/io", (req, res) => {
-  const { referral } = req.query;
+router.get("/io/referral=:referral", (req, res) => {
+  const { referral } = req.params;
   console.log("🔥🔥🔥🔥🔥🔥");
   //http://localhost:3001/api/auth/google?referral=salim
   console.log(referral);
